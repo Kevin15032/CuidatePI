@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>principal</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="primcipal.css">
 </head>
 <body>
 
@@ -14,17 +14,27 @@
         <div class="menu-wrapper">
             <div class="menu-bar">
                 <ul class="navigation">
-                <button class="btn btn-primary m-2" id="btnRutina">Rutina</button>
-                <button class="btn btn-primary m-2" id="btnPlanAlimenticio">Plan Alimenticio</button>
-                <button class="btn btn-primary m-2" id="btnUsuario">Usuario</button>
-                <button class="btn btn-primary m-2" id="btnConfiguracion">Configuración</button>
+                    <li>
+                        <a href="#" id="btn-rutina" title="Entrenamiento">Rutina</a>
+                    </li>
+                    <li>
+                        <a href="#" id="btn-alimentacion" title="Alimentacion">Alimentacion</a>
+                    </li>
+                    <li>
+                        <a href="#" title="Usuario">Usuario</a>
+                    </li>
+                    <li>
+                        <a href="#" title="Configuraciones">Configuraciones</a>
+                    </li>
                 </ul>
-            </div>
-        </div>
-    </div>
+            </div> <!-- Cierre de menu-bar -->
+        </div> <!-- Cierre de menu-wrapper -->
+    </div> <!-- Cierre de full-background -->
+    
 
     <!-- Plan Semanal de Comidas -->
-    <div id="tabla-alimentacion" class="container">
+    <div class="content-container">
+    <div id="tabla-alimentacion" class="container d-none">
         <h2 class="text-center mb-4 text-success">Plan Semanal de Comidas</h2>
         <table class="table table-bordered">
             <thead class="thead-light">
@@ -145,9 +155,10 @@
             </tbody>
         </table>
     </div>
-
+</div>
     <!-- Plan Semanal de Ejercicios -->
-    <div id="tabla-rutina" class="container">
+    <div class="content-container">
+    <div id="tabla-rutina" class="container d-none">
         <h2 class="text-center mb-4 text-success">Plan Semanal de Ejercicios</h2>
         <table class="table table-bordered">
             <thead class="thead-light">
@@ -268,35 +279,22 @@
             </tbody>
         </table>
     </div>
-
+</div>
     <!-- Custom Script -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="index.js"></script> -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Referencias a las tablas
-            var tablaRutina = document.getElementById('tabla-rutina');
-            var tablaAlimentacion = document.getElementById('tabla-alimentacion');
-            
-            // Inicialmente oculta ambas tablas
-            tablaRutina.style.display = 'none';
-            tablaAlimentacion.style.display = 'none';
-            
-            // Event listeners para los enlaces
-            document.querySelector('a[title="Rutina"]').addEventListener('click', function(event) {
-                event.preventDefault();
-                tablaRutina.style.display = 'block';
-                tablaAlimentacion.style.display = 'none';
-            });
-            
-            document.querySelector('a[title="Plan alimenticio"]').addEventListener('click', function(event) {
-                event.preventDefault();
-                tablaRutina.style.display = 'none';
-                tablaAlimentacion.style.display = 'block';
-            });
-        });
+      document.getElementById('btn-rutina').addEventListener('click', function() {
+        document.getElementById('tabla-alimentacion').classList.add('d-none');
+        document.getElementById('tabla-rutina').classList.remove('d-none');
+    });
+
+    document.getElementById('btn-alimentacion').addEventListener('click', function() {
+        document.getElementById('tabla-rutina').classList.add('d-none');
+        document.getElementById('tabla-alimentacion').classList.remove('d-none');
+    });
     </script>
 </body>
 </html>
